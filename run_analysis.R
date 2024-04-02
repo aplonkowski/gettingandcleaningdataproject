@@ -1,6 +1,5 @@
-dir.create("project")
-
 ##Reading in Data
+dir.create("project")
 features <- read.table("./project/UCI HAR Dataset/features.txt", 
                        col.names = c("number", "feature"))
 activities <- read.table("./project/UCI HAR Dataset/activity_labels.txt",
@@ -51,3 +50,4 @@ means_data <- tidydata %>%
   group_by(subject, activities) %>%
   summarise_all(list(mean))
 str(means_data)
+write.table(means_data, "FinalData.txt", row.name=FALSE)
